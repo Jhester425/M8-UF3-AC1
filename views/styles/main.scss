@@ -1,0 +1,19 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h2{
+    color: blue;
+}
+table{
+    border-collapse: collapse;
+}
+td{
+    border: solid 2px blue;
+    padding: 10px;
+}
+th{
+    border: solid 2px blue;
+    padding: 10px;
+}

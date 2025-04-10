@@ -1,0 +1,20 @@
+{
+  "name": "productsapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "mongodb": "^4.14.0",
+    "mongoose": "^8.13.2",
+    "pug": "^3.0.2"
+  }
+}
