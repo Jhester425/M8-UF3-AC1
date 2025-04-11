@@ -1,9 +1,11 @@
+
 // Load environment variables from .env file
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const path = require('path'); // ✅ Required for setting views path
+const slugify = require('slugify');
 
 // Simulating in-memory storage for users and products
 let users = [];
@@ -36,10 +38,17 @@ const Product = {
   price: Number,
 };
 
-// ✅ Rendered view at /api/
+// Rendered view at /api/
 app.get('/api', (req, res) => {
-  res.render('index', { title: 'API Home', message: 'Welcome to the API interface!' });
+  // Use slugify to slugify the welcome message with asterisks instead of spaces
+  const slugifiedMessage = slugify('Welcome to the API interface!', {
+    replacement: '*',  // Replaces spaces with asterisks
+    lower: true,       // Converts the message to lowercase
+  });
+
+  res.render('index', { title: 'API Home', message: slugifiedMessage });
 });
+
 
 // User registration route (POST /api/users/register)
 app.post('/api/users/register', async (req, res) => {
