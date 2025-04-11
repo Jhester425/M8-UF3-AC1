@@ -38,16 +38,15 @@ const Product = {
   price: Number,
 };
 
-// Rendered view at /api/
+// Define the /api route before the root path
 app.get('/api', (req, res) => {
-  // Use slugify to slugify the welcome message with asterisks instead of spaces
   const slugifiedMessage = slugify('Welcome to the API interface!', {
-    replacement: '*',  // Replaces spaces with asterisks
-    lower: true,       // Converts the message to lowercase
+    replacement: '*',
+    lower: true,
   });
-
   res.render('index', { title: 'API Home', message: slugifiedMessage });
 });
+
 
 
 // User registration route (POST /api/users/register)
@@ -144,7 +143,7 @@ app.listen(5000, () => {
 });
 
 
+// Root path route
 app.get('/', (req, res) => {
   res.send('Welcome to the API');
 });
-
