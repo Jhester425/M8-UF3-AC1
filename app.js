@@ -15,7 +15,7 @@ let products = [];
 const app = express();
 
 // View engine setup 
-app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 // Middleware
@@ -38,15 +38,22 @@ const Product = {
   price: Number,
 };
 
-// Define the /api route before the root path
+// /api route using slugify for 'aviso'
 app.get('/api', (req, res) => {
   const slugifiedMessage = slugify('Welcome to the API interface!', {
     replacement: '*',
     lower: true,
   });
-  res.render('index', { title: 'API Home', message: slugifiedMessage });
+  res.render('index', { 
+    titulo: 'API Home',
+    aviso: slugifiedMessage,
+    howto: 'Follow the instructions below to use the API:',
+    rutas: [
+      ['Register User', '/api/users/register'], 
+      ['Get Products', '/api/products']
+    ]
+  });
 });
-
 
 
 // User registration route (POST /api/users/register)
